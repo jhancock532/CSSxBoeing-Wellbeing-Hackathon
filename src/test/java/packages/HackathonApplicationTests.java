@@ -1,4 +1,4 @@
-package com.manyways.hackathon;
+package packages;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

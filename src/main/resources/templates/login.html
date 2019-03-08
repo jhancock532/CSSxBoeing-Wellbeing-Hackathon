@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    
+    <head th:include="fragments/header :: head (title='Login')"></head>
+    
+    <body>
+        <div class="container">
+
+            <div style="padding-top: 3em;"></div>
+            
+            <h1 class="display-4 text-center">Login Page</h1>
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4">
+                        <div th:if="${param.error}">
+                            <div class="card border-danger" style="margin-top: 1em;">
+                                <div class="card-body text-center text-danger">
+                                    <b>We're sorry, you've entered an invalid username or password.</b>
+                                </div>
+                            </div>
+                        </div>
+                        <div th:if="${param.logout}">
+                            <div class="card border-success" style="margin-top: 1em;">
+                                <div class="card-body text-center text-success">
+                                    <b>You have been successfully logged out.</b>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form th:action="@{/login}" method="post" style="margin-top: 1.5em;">
+                            <div class="form-group">
+                                <label for="username">Email</label>
+                                <input class="form-control" type="text" name="username" id="username"/> 
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input class="form-control" type="password" name="password" id="password"/> 
+                            </div>
+
+                            <div class="text-center" style="padding-top:1em;"><input class="btn btn-info" type="submit" value="Submit"/></div>
+                        </form>
+                    </div>
+                    <div class="col-sm-4"></div>
+                </div>
+            </div>
+        </div> <!-- container -->
+        
+        <div th:replace="fragments/footer :: footer">&nbsp;</div>
+    </body>
+</html>

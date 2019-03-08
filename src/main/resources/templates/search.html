@@ -3,22 +3,31 @@
 <head th:include="fragments/header :: head (title='Search Results')"></head>
 
     <body>
-        <div th:replace="fragments/header :: header">&nbsp;</div>
-
         <div class="container">
+            <div th:include="fragments/header :: header">Navigation bar.</div>
             
-            <!-- Header of Search Results -->
+            <!-- Search Results Header -->
             <section>
                 <div class="text-center">
-                    <p class="display-3">Search Results</p>
+                    <p class="lead" th:text="${'We found these search results for ' + searchQuery.getQuery() + '.'}">Search Results</p>
                 </div>
                 
-                <p>Tags</p>
                 <p>Tags</p>
             </section>
             
             <!-- The Search Results -->
             <section>
+                <div class="" th:each="quoteStory: ${QuoteStories}">
+                    
+                    <div th:if="${quoteStory.type == 'story'}">
+                        <p th:text="${quoteStory.story.getTitle()}"></p>
+                    </div>
+                    
+                    <div th:if="${quoteStory.type == 'quote'}">
+                        <p th:text="${quoteStory.quote.getQuote()}"></p>
+                    </div>
+                    
+                </div>
             </section>
         </div>
 

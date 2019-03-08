@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package packages.repositories;
 
-/**
- *
- * @author jhanc
- */
-public class QuoteRepository {
+import org.springframework.data.repository.CrudRepository;
+import packages.tables.Quote;
+
+public interface QuoteRepository extends CrudRepository<Quote, Integer>{
     
 }

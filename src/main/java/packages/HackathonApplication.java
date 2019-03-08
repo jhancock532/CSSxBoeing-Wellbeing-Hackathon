@@ -1,4 +1,4 @@
-package com.manyways.hackathon;
+package packages;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

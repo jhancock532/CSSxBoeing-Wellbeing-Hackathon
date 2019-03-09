@@ -3,6 +3,7 @@
 <head th:include="fragments/header :: head (title='Many Ways | Search Results')"></head>
 
     <body>
+        
         <div class="container">
             <div th:include="fragments/header :: header">Navigation bar.</div>
             
@@ -27,7 +28,7 @@
                                         <h5 class="card-title" style="font-weight: 600;" th:text="${quoteStory.story.getTitle()}">Card title</h5>
                                         <p class="card-text" th:text="${quoteStory.story.getDescription()}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                         <h6 class="card-subtitle mb-3 text-muted" style="font-size: 0.9em;" th:text="${quoteStory.story.getTags()}"></h6>
-                                        <a target="_blank" th:href="${quoteStory.story.getURL()}" class="card-link text-success">Read the full story here.</a> 
+                                        <a target="_blank" th:href="${quoteStory.story.getURL()}" class="card-link text-success">Read the story here.</a> 
                                     </div>
                                 </div>                             
                             </div>
@@ -61,8 +62,8 @@
             </section>
             <hr>
                 
-            <!-- Advertisement -->
-            <section th:if="${searchQuery.getQuery() == 'self-love'}">
+            <!-- Advertisement (Big White Wall) -->
+            <section th:if="${searchQuery.getQuery() == 'love'}">
                 
                 <div style="padding-bottom: 1em;"></div>
                 
@@ -94,15 +95,52 @@
                 <div style="padding-bottom: 1em;"></div>
             <hr>
             </section>
-            
-            <!--https://www.beateatingdisorders.org.uk/-->
+
+            <!-- Advertisement (Beat)-->
+            <section th:if="${searchQuery.getQuery() == 'eating disorder'}">
+                
+                <div style="padding-bottom: 1em;"></div>
+                
+                <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-3">
+                        <a target="_blank" href="https://www.beateatingdisorders.org.uk/">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Beat_logo.jpg" class="img-fluid" alt="Beat Eating Disorders logo.">
+                        </a>
+                    </div>
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-header text-center" style="background-color: #c69ed0;">
+                                Sponsored Advertisement
+                            </div>
+
+                            <div class="card-body" style="background-color: #d9bedf;">
+                                <div class="card-body">
+                                    <h5 class="card-title" style="font-weight: 600;">Beat Eating Disorders</h5>
+                                    <p class="card-text">Beat provides recovery information online, multiple phone lines and a tool to find support in your local area.</p>
+                                    <a target="_blank" style="color: #6F387D;" href="https://www.beateatingdisorders.org.uk/" class="card-link">Click here to learn more</a> 
+                                </div>
+                            </div>
+                        </div>                             
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                
+                <div style="padding-bottom: 1em;"></div>
+            <hr>
+            </section>
                 
             <!-- Related Tags -->
             <section>
-                <p class="lead text-center">Related search tags</p>
+                <div class="text-center" id="tags">
+                    <h3 class="">Related Search Tags</h3>
+                    <a class="small text-success" onclick="showAllTags()" id="showAllTagsLink" href="#tags">Show all tags (common sensitive topics hidden)</a>
+                    <div style="padding-bottom: 0.3em;"></div>
+                </div>
                 <ul class="nav justify-content-center">
                     <li class="nav-item" th:each="tag: ${searchQuery.getRelatedTags()}">
-                        <a class="nav-link text-success" style="font-weight: 400;" th:text="${tag}" th:href="'/search?query=' + ${tag}"></a>
+                        <a class="nav-link text-success tag" style="font-weight: 400;" th:text="${tag}" th:href="'/search?query=' + ${tag}"></a>
                     </li>
                 </ul>
             </section>
@@ -123,7 +161,10 @@
             </th:block>
         </div>
 
+        
         <div th:replace="fragments/footer :: footer">&nbsp;</div>
+        
+        <script type="text/javascript" src="js/search.js"></script>
     </body>
 
 </html>

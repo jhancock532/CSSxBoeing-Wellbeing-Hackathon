@@ -2,10 +2,12 @@ package packages.tables;
 
 import java.util.Arrays;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 @Entity
 public class Story {
@@ -16,10 +18,16 @@ public class Story {
     
     private String title;
     
+    @Lob 
+    @Column(name="description", length=512)
     private String description;
     
+    @Lob 
+    @Column(name="URL", length=128)
     private String URL;
     
+    @Lob 
+    @Column(name="tags", length=512)
     private String tags;
     
     public Story(){}
@@ -32,7 +40,7 @@ public class Story {
     }
     
     public List<String> getTagsList(){
-        List<String> items = Arrays.asList(this.tags.split(","));
+        List<String> items = Arrays.asList(this.tags.split("\\s*,\\s*"));
         return items;
     }
     

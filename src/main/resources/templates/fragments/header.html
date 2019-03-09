@@ -18,30 +18,31 @@
 </head>
     <body>
         <div th:fragment="header">
-            <div class="container" style="padding-top: 20px; padding-bottom: 20px;">
+            <div class="container" style="padding-top: 20px;">
                 <ul class="nav justify-content-center nav-fill">
                     <li class="nav-item">
-                        <a class="nav-link text-primary" href="/">Search</a>
+                        <a class="nav-link text-success" href="/">Search</a>
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link text-primary" href="/principles">Principles</a>
+                        <a class="nav-link text-success" href="/principles">Principles</a>
                     </li>
                     
                     <li sec:authorize="isAuthenticated()" class="nav-item">
-                        <a class="nav-link text-primary" href="/contribute">Contribute</a>
+                        <a class="nav-link text-success" href="/contribute">Contribute</a>
                     </li>
                     
                     <li sec:authorize="isAuthenticated()" class="nav-item">
                         <form th:action="@{/logout}" method="post">
-                            <button type="submit" class="btn">Sign Out</button>
+                            <button type="submit" class="btn btn-outline-success">Sign Out</button>
                         </form>
                     </li>
                   
                     <li sec:authorize="isAnonymous()" class="nav-item">
-                        <a class="btn" href="/login">Login</a>
+                        <a class="btn btn-outline-success" href="/login">Login</a>
                     </li>
                 </ul>
+                <hr>
             </div>
         </div>
     </body>

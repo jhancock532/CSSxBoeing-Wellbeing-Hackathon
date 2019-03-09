@@ -4,15 +4,33 @@
 
     <body>
         
+        <style>
+            ::-webkit-input-placeholder {
+                text-align: center;
+             }
+
+             ::-moz-placeholder { /* Firefox 18- */
+                text-align: center;  
+             }
+
+             ::-moz-placeholder {  /* Firefox 19+ */
+                text-align: center;  
+             }
+
+             ::-ms-input-placeholder {  
+                text-align: center; 
+             }
+        </style>
+        
         <div class="container">
-            <div style="padding-top: 1em;"></div>
+            <div style="padding-top: 3em;"></div>
             <div class="text-center">
                                 
                 <h1 class="display-1">Many Ways</h1>
 
-                <p class="lead" style="padding-top: 1em;">A collection of human stories about overcoming difficulties.</p>
+                <p class="lead" style="padding-top: 2em; font-weight: 600;">A collection of human stories about overcoming difficulties.</p>
 
-                <form th:action="@{/search}" method="post" style="margin-top: 1em;">
+                <form th:action="@{/search}" method="post" style="margin-top: 1.5em;">
                     
                     <div class="row">
                         <div class="col-sm-3"></div>
@@ -21,18 +39,17 @@
                                    type="text" 
                                    name="query" 
                                    id="query"
-                                   placeholder="Search for posts here."
+                                   placeholder="Search for a story by entering text here."
                                    /> 
                         </div>
                         <div class="col-sm-3"></div>
                     </div>
-                    <div class="text-center" style="padding-top:0.4em;">
-                        <input class="btn btn-success" type="submit" value="Search"/>
+                    <div class="text-center" style="padding-top:0.5em;">
+                        <input class="btn btn-success btn-lg" type="submit" value="Search"/>
                     </div>
                 </form>
                 
-                <p class="" style="padding-top: 3em;">To read more about the principles behind this website, <a href="/principles">click here</a>.</p>
-                
+                <p class="lead" style="font-weight: 300; padding-top:2.2em;">Discover the <a class=" text-success" href="/principles">principles</a> behind this website.</p>
             </div>
         </div>
 

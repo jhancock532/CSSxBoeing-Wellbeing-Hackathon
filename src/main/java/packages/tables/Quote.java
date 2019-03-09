@@ -2,10 +2,12 @@ package packages.tables;
 
 import java.util.Arrays;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 @Entity
 public class Quote {
@@ -14,10 +16,14 @@ public class Quote {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     
+    @Lob 
+    @Column(name="quote", length=1024)
     private String quote;
     
     private String author;
     
+    @Lob 
+    @Column(name="tags", length=512)
     private String tags;
     
     public Quote(){}
@@ -29,7 +35,7 @@ public class Quote {
     }
     
     public List<String> getTagsList(){
-        List<String> items = Arrays.asList(this.tags.split(","));
+        List<String> items = Arrays.asList(this.tags.split("\\s*,\\s*"));
         return items;
     }
     

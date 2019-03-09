@@ -9,10 +9,8 @@
             <!-- Search Results Header -->
             <section>
                 <div class="text-center">
-                    <p class="lead" th:text="${'We found these search results for ' + searchQuery.getQuery() + '.'}">Search Results</p>
+                    <p class="lead" style="font-size: 2em; padding-top: 0.3em; padding-bottom: 0.3em;" th:text="${'We found these search results for ' + searchQuery.getQuery() + '.'}">Search Results</p>
                 </div>
-                
-                <p>Tags</p>
             </section>
             
             <!-- The Search Results -->
@@ -20,15 +18,62 @@
                 <div class="" th:each="quoteStory: ${QuoteStories}">
                     
                     <div th:if="${quoteStory.type == 'story'}">
-                        <p th:text="${quoteStory.story.getTitle()}"></p>
+                        <div class="row">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-8">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="font-weight: 600;" th:text="${quoteStory.story.getTitle()}">Card title</h5>
+                                        <p class="card-text" th:text="${quoteStory.story.getDescription()}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <h6 class="card-subtitle mb-3 text-muted" style="font-size: 0.9em;" th:text="${quoteStory.story.getTags()}"></h6>
+                                        <a target="_blank" th:href="${quoteStory.story.getURL()}" class="card-link text-success">Read the full story here.</a> 
+                                    </div>
+                                </div>                             
+                            </div>
+                            <div class="col-sm-2"></div>
+                        </div>
                     </div>
                     
                     <div th:if="${quoteStory.type == 'quote'}">
-                        <p th:text="${quoteStory.quote.getQuote()}"></p>
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <!--
+                                        <p class="card-text" th:text="${quoteStory.quote.getQuote()}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <h6 class="card-subtitle mb-3 text-muted" th:text="${quoteStory.quote.getAuthor()}"></h6>
+                                        -->
+                                        
+                                        <blockquote class="blockquote mb-0">
+                                            <p th:text="${quoteStory.quote.getQuote()}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                                            <footer class="blockquote-footer" th:text="${quoteStory.quote.getAuthor()}">Someone famous</footer>
+                                        </blockquote>
+                                    
+                                    </div>
+                                </div>                             
+                            </div>
+                            <div class="col-sm-3"></div>
+                        </div>
                     </div>
                     
+                    <div style="padding-bottom: 1.5em;"></div>
                 </div>
+                
+                
             </section>
+            <hr>
+                
+            <!-- Related Tags -->
+            <section>
+                <p class="lead text-center">Related tags</p>
+                <ul class="nav justify-content-center">
+                    <li class="nav-item" th:each="tag: ${searchQuery.getRelatedTags()}">
+                        <a class="nav-link text-success" style="font-weight: 400;" th:text="${tag}" th:href="'/search?query=' + ${tag}"></a>
+                    </li>
+                </ul>
+            </section>
+            <hr>
         </div>
 
         <div th:replace="fragments/footer :: footer">&nbsp;</div>

@@ -2,14 +2,13 @@ package packages.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
-
 
 import packages.repositories.StoryRepository;
 import packages.repositories.QuoteRepository;
@@ -37,18 +36,52 @@ public class SearchController {
         //Based on query get a list of quotes and stories for the user.
         List<QuoteStory> quotesAndStories = combineQuotesAndStories(getQuotes(query), getStories(query));
         
+        List<String> relatedTags = getRelatedTagsFromSearchResults(quotesAndStories);
+        
         Query searchQuery;
         //Create a query object for the Query string
         if (quotesAndStories.size() > 0){
-            searchQuery = new Query(query, true); //Results have been found.
+            searchQuery = new Query(query, true, relatedTags); //Results have been found.
         } else {
-            searchQuery = new Query(query, false); //No results have been found.
+            searchQuery = new Query(query, false, relatedTags); //No results have been found.
         }
             
         //Add these to the model view object.
         mav.addObject("QuoteStories", quotesAndStories);
         mav.addObject("searchQuery", searchQuery);
         return mav;
+    }
+    
+    private List<String> getRelatedTagsFromSearchResults(List<QuoteStory> results){
+        List<String> relatedTags = new ArrayList<String>();
+        
+        for (QuoteStory qs : results){
+            if (qs.type == "quote"){
+                List<String> tags = qs.quote.getTagsList();
+                
+                for (Integer i = 0; i < tags.size(); i++){
+                    if (relatedTags.contains(tags.get(i)) == false){
+                        relatedTags.add(tags.get(i));
+                    }
+                }
+            }
+            
+            if (qs.type == "story"){
+                List<String> tags = qs.story.getTagsList();
+                
+                for (Integer i = 0; i < tags.size(); i++){
+                    if (relatedTags.contains(tags.get(i)) == false){
+                        relatedTags.add(tags.get(i));
+                    }
+                }
+            }
+        }
+        
+        if (relatedTags.size() > 15){
+            relatedTags = relatedTags.stream().limit(15).collect(Collectors.toList());
+        }
+        
+        return relatedTags;
     }
     
     private List<QuoteStory> combineQuotesAndStories(List<Quote> quotes, List<Story> stories){
@@ -84,10 +117,14 @@ public class SearchController {
     
     private List<Story> getStories(String query){
         List<Story> relevantStories = new ArrayList<Story>();
-        Iterable<Story> allQuotes = storyRepo.findAll();
+        Iterable<Story> allStories = storyRepo.findAll();
         
-        for (Story story: allQuotes){
-            relevantStories.add(story);
+        for (Story story: allStories){
+            List<String> tags = story.getTagsList();
+            
+            if (tags.contains(query)){
+                relevantStories.add(story);
+            }
         }
         
         return relevantStories;
@@ -98,7 +135,11 @@ public class SearchController {
         Iterable<Quote> allQuotes = quoteRepo.findAll();
         
         for (Quote quote: allQuotes){
-            relevantQuotes.add(quote);
+            List<String> tags = quote.getTagsList();
+            
+            if (tags.contains(query)){
+                relevantQuotes.add(quote);
+            }
         }
         
         return relevantQuotes;

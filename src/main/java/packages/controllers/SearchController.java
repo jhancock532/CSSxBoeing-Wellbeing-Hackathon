@@ -1,8 +1,14 @@
 package packages.controllers;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import static java.util.Map.Entry.comparingByValue;
 import java.util.stream.Collectors;
+import static java.util.stream.Collectors.toMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -53,29 +59,40 @@ public class SearchController {
     }
     
     private List<String> getRelatedTagsFromSearchResults(List<QuoteStory> results){
+        Map<String, Integer> potentialTags = new HashMap<String, Integer>();
         List<String> relatedTags = new ArrayList<String>();
+        List<String> tags = new ArrayList<String>();
         
         for (QuoteStory qs : results){
             if (qs.type == "quote"){
-                List<String> tags = qs.quote.getTagsList();
-                
-                for (Integer i = 0; i < tags.size(); i++){
-                    if (relatedTags.contains(tags.get(i)) == false){
-                        relatedTags.add(tags.get(i));
-                    }
-                }
+                tags = qs.quote.getTagsList();
             }
-            
+
             if (qs.type == "story"){
-                List<String> tags = qs.story.getTagsList();
-                
-                for (Integer i = 0; i < tags.size(); i++){
-                    if (relatedTags.contains(tags.get(i)) == false){
-                        relatedTags.add(tags.get(i));
-                    }
+                tags = qs.story.getTagsList();
+            }
+                         
+            for (Integer i = 0; i < tags.size(); i++){
+                String tag = tags.get(i);
+                if (potentialTags.containsKey(tag)){
+                    Integer count = potentialTags.get(tag);
+                    count += 1;
+                    potentialTags.put(tag, count);
+                } else {
+                    potentialTags.put(tag, 1);
                 }
             }
         }
+        
+        Map<String, Integer> sortedTags = potentialTags
+            .entrySet()
+            .stream()
+            .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+            .collect(
+                toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new)
+            );
+        
+        relatedTags = new ArrayList<String>(sortedTags.keySet());
         
         if (relatedTags.size() > 15){
             relatedTags = relatedTags.stream().limit(15).collect(Collectors.toList());

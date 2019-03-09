@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlnz:th="http://www/thymeleaf.org">
-<head th:include="fragments/header :: head (title='Search Results')"></head>
+<head th:include="fragments/header :: head (title='Many Ways | Search Results')"></head>
 
     <body>
         <div class="container">
             <div th:include="fragments/header :: header">Navigation bar.</div>
             
+            <th:block th:if="${searchQuery.anyResultsFound()}">
             <!-- Search Results Header -->
             <section>
                 <div class="text-center">
@@ -40,11 +41,7 @@
                             <div class="col-sm-6">
                                 <div class="card">
                                     <div class="card-body">
-                                        <!--
-                                        <p class="card-text" th:text="${quoteStory.quote.getQuote()}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <h6 class="card-subtitle mb-3 text-muted" th:text="${quoteStory.quote.getAuthor()}"></h6>
-                                        -->
-                                        
+
                                         <blockquote class="blockquote mb-0">
                                             <p th:text="${quoteStory.quote.getQuote()}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
                                             <footer class="blockquote-footer" th:text="${quoteStory.quote.getAuthor()}">Someone famous</footer>
@@ -64,9 +61,45 @@
             </section>
             <hr>
                 
+            <!-- Advertisement -->
+            <section th:if="${searchQuery.getQuery() == 'self-love'}">
+                
+                <div style="padding-bottom: 1em;"></div>
+                
+                <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                        <a target="_blank" href="https://www.bigwhitewall.com/v2/LandingV2.aspx?ReturnUrl=%2f">
+                            <img src="https://www.bournemouth.ac.uk/sites/default/files/assets/images/Big-White-Wall-square-logo-edit.jpg" class="img-fluid" alt="Big White Wall logo.">
+                        </a>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <!--  style="background-color: #addbad;" -->
+                            <div class="card-header text-center" style="background-color: #A9D8A9;">
+                                Sponsored Advertisement
+                            </div>
+                            <div class="card-body" style="background-color: #def0de;">
+                                <div class="card-body">
+                                    <h5 class="card-title" style="font-weight: 600;">Chat on Big White Wall</h5>
+                                    <p class="card-text">You're not alone. Join the Big White Wall's online community for free mental health support through a common forum.</p>
+                                    <a target="_blank" href="https://www.bigwhitewall.com/v2/LandingV2.aspx?ReturnUrl=%2f" class="card-link text-success">Click here to learn more</a> 
+                                </div>
+                            </div>
+                        </div>                             
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                
+                <div style="padding-bottom: 1em;"></div>
+            <hr>
+            </section>
+            
+            <!--https://www.beateatingdisorders.org.uk/-->
+                
             <!-- Related Tags -->
             <section>
-                <p class="lead text-center">Related tags</p>
+                <p class="lead text-center">Related search tags</p>
                 <ul class="nav justify-content-center">
                     <li class="nav-item" th:each="tag: ${searchQuery.getRelatedTags()}">
                         <a class="nav-link text-success" style="font-weight: 400;" th:text="${tag}" th:href="'/search?query=' + ${tag}"></a>
@@ -74,6 +107,20 @@
                 </ul>
             </section>
             <hr>
+            </th:block>
+            
+            <th:block th:if="${searchQuery.anyResultsFound() == false}">
+            <!-- Search Results Header -->
+            <section>
+                <div class="text-center">
+                    <p class="lead" style="font-size: 2em; padding-top: 0.3em; padding-bottom: 0.3em;" th:text="${'Unfortunately there are no search results for ' + searchQuery.getQuery() + '.'}">Search Results</p>
+                    <p sec:authorize="isAuthenticated()">If you'd like to add your own story or quote, please <a href="/contribute" class="text-success">contribute</a> to the site.</p>
+                    <p sec:authorize="isAnonymous()">If you'd like to add your own story or quote, please <a href="/login" class="text-success">sign in</a> to your account and go to the contribute page.</p>
+                </div>
+                <div style="padding-bottom: 1em;"></div>
+            </section>
+            <hr>
+            </th:block>
         </div>
 
         <div th:replace="fragments/footer :: footer">&nbsp;</div>

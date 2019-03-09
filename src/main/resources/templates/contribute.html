@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlnz:th="http://www/thymeleaf.org">
+<head th:include="fragments/header :: head (title='Many Ways | Contribute')"></head>
+
+    <body>
+        <div class="container">
+            <div th:include="fragments/header :: header">Navigation bar.</div>
+            
+            <!-- Header Section -->
+            <section>
+                <div class="text-center">
+                    <p class="display-3">Contribute</p>
+                    <p class="lead" style='padding-bottom: 0.5em'>Submit a story or quote to this website.</p>
+                </div>
+                
+                <div class="text-center">
+                    <button class="btn btn-success" onclick="showStoryForm()" style="margin-right:1em;">Link to a Story</button>
+                    <button class="btn btn-success" onclick="showQuoteForm()">Add a Quote</button>
+                    <p style='padding-top: 1.5em; padding-bottom: 0.5em;'>Please follow our <a href="/principles" class="text-success">principles</a> when submitting content to this site.</p>
+                </div>
+                
+                <hr>
+            </section>
+            
+            
+            <!-- Successful Submission Section-->
+            <section>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <div th:if="${param.successful}">
+                            <div class="card border-success" style="margin-top: 1em; margin-bottom: 1em;">
+                                <div class="card-body text-center text-success">
+                                    <b>Your submission has been received. Thank you for contributing!</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+                <hr>
+            </section>
+            
+            <!-- Link to Story Form -->
+            <section id="storyFormSection" style="display: none;">
+                <div class="row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8">
+                        <p class="text-center lead">Form to Submit a Story</p>
+                        <form th:action="${'/contribute/add-story'}" th:object="${submitStory}" th:method="PUT" enctype="multipart/form-data">
+                            <!-- Title -->
+                            <div class="form-group row">
+                                <label for="title" class="col-sm-2 col-form-label"><b>Title</b></label>
+                                <div class="col-sm-10">
+                                    <input class="form-control"  name="title" id="title" placeholder=""></textarea>
+                                </div>
+                            </div>
+                            
+                            <!-- Description -->
+                            <div class="form-group row">
+                                <label for="description" class="col-sm-2 col-form-label"><b>Description</b></label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="3" name="description" id="description" placeholder="Who wrote it? What is it about? What is the conclusion?"></textarea>
+                                </div>
+                            </div>
+                            
+                            <!-- URL -->
+                            <div class="form-group row">
+                                <label for="URL" class="col-sm-2 col-form-label"><b>Link</b></label>
+                                <div class="col-sm-10">
+                                    <input class="form-control"  name="URL" id="URL" placeholder="Enter the URL to the website."></textarea>
+                                </div>
+                            </div>
+                            
+                            <!-- Tags -->
+                            <div class="form-group row">
+                                <label for="tags" class="col-sm-2 col-form-label"><b>Tags</b></label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" name="tags" id="tags" placeholder="A comma seperated list of search tags.">
+                                </div>
+                            </div>
+                            
+                            <!-- Submit -->
+                            <div class="text-center">
+                                <button class="btn btn-success" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
+                
+            </section>
+            
+            <!-- Quote Form -->
+            <section id="quoteFormSection" style="display: none;">
+                <div class="row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8">
+                        <p class="text-center lead">Form to Submit a Quote</p>
+                        <form th:action="${'/contribute/add-quote'}" th:object="${submitQuote}" th:method="PUT" enctype="multipart/form-data">
+                            <!-- Quote -->
+                            <div class="form-group row">
+                                <label for="quote" class="col-sm-2 col-form-label"><b>Quote</b></label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="4" name="quote" id="quote" placeholder="Enter the quote here."></textarea>
+                                </div>
+                            </div>
+                            
+                            <!-- Author -->
+                            <div class="form-group row">
+                                <label for="author" class="col-sm-2 col-form-label"><b>Author</b></label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" name="author" id="author" placeholder="The person attributed to saying the quote.">
+                                </div>
+                            </div>
+                            
+                            <!-- Tags -->
+                            <div class="form-group row">
+                                <label for="tags" class="col-sm-2 col-form-label"><b>Tags</b></label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" name="tags" id="tags" placeholder="A comma seperated list of search tags.">
+                                </div>
+                            </div>
+                            
+                            <!-- Submit -->
+                            <div class="text-center">
+                                <button class="btn btn-success" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
+            </section>
+        </div>
+
+        <div th:replace="fragments/footer :: footer">&nbsp;</div>
+        
+        <script type="text/javascript" src="js/contribute.js"></script>
+    </body>
+
+</html>

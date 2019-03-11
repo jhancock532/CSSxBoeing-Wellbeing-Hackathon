@@ -1,5 +1,8 @@
 # CSSxBoeing Wellbeing Hackathon
 
+## Competition Results
+Awarded the Best Individual Mental Health Project prize. The original awards the competition was based around were Best Mental Health Project, Best Safety Project, Best Fitness Project, however the judges made an exception in allocating prizes for my case. They recognised the work I'd completed as a solo team member, and so extended the Best Mental Health Project to two teams - A team of 6 final year students and me. 
+
 ## Motive
 * Real stories are shared on this website to help visitors understand that they are not alone in facing their issues, with quotes used to capture key insights. 
 * Through reading another person's story, identifying and empathising with the writer, some of our shame is lessened in turn.
@@ -14,7 +17,4 @@
 ## Event Details
 The event lasted 24 hours, starting 8/3/19 at 3pm then finishing the following day.
 
-I completed the project as a solo team, under the team name of Bootstrap 9000, reflecting how I used spring boot and bootstrap.css for developing the server and style.
-
-## Competition Results
-* Awarded Best Mental Health Project prize, a joint award with another team.
+I completed the project by myself, under the team name of Bootstrap 9000, reflecting how I used spring boot and bootstrap.css for developing the server and style.

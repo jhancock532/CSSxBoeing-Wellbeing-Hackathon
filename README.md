@@ -12,7 +12,7 @@ Awarded the [Best Individual Project Prize](https://twitter.com/CSSBristol/statu
 * Reading more stories, we learn more about what it means to be human; that we are all facing difficulties, that no-one is perfect, and that this is ok. 
 * Understanding this, we start to lessen our expectations for ourselves, lessen the guilt we have about our actions and lessen the shame we have built up inside us.
 * Of course, you might not find this site that helpful for you. That's ok! We're all unique, different things work for different people. 
-* There are **many ways** to overcome our difficulties.
+* There are **many ways** to overcome our difficulties. I hope the stories demonstrate this.
 
 ## Website Functionality
 * A basic search function which lists stories and quotes.

@@ -1,20 +1,21 @@
 # CSSxBoeing Wellbeing Hackathon
 
-## Competition Results
-Awarded the Best Individual Mental Health Project prize. The original awards the competition was based around were Best Mental Health Project, Best Safety Project, Best Fitness Project, however the judges made an exception in allocating prizes for my case. They recognised the work I'd completed as a solo team member, and so extended the Best Mental Health Project to two teams - A team of 6 final year students and me. 
+A 24 hour hackathon event run by the University of Bristol's Computer Science Society in collaboration with Boeing. I completed the project solo, under the team name of *Bootstrap 9000* - I used [Spring Boot](https://spring.io/projects/spring-boot) and [bootstrap.css](https://getbootstrap.com/docs/4.0/getting-started/introduction/) for developing the server and styling the site.
 
-## Motive
-* Real stories are shared on this website to help visitors understand that they are not alone in facing their issues, with quotes used to capture key insights. 
-* Through reading another person's story, identifying and empathising with the writer, some of our shame is lessened in turn.
-* When we learn how they faced their difficulty, new possibilities for how we face our own difficulties open up to us. 
+## Competition Results
+Awarded the [Best Individual Project Prize](https://twitter.com/CSSBristol/status/1106484984968302592). The original awards that the competition was based around were Best Mental Health Project, Best Safety Project, Best Fitness Project; however, the judges made an exception in allocating an extra prize for my project.
+
+## The Pitch
+* This is a website that aggregates personal stories from across the Internet, all from people who've overcome large difficulties in their lives, mostly on a theme of wellbeing.
+* Real stories are shared to help visitors understand that they are not alone in facing their issues.
+* When we learn how another person faced a difficulty similar to ours, new possibilities open up to us. We can identify and empathise with the writer.
+* Reading more stories, we learn more about what it means to be human; that we are all facing difficulties, that no-one is perfect, and that this is ok. 
+* Understanding this, we lessen our expectations for ourselves, lessen the guilt we have about our actions and lessen the shame we have built up inside us.
+* Of course, reading stories might not be that helpful for you. That's ok! We're all unique, different things work for different people. If you've read a few stories, you've probably realised that there are **many ways** to overcome our difficulties anyway.
+* Why not try something different based on what you've read?
 
 ## Website Functionality
 * A basic search function which lists stories and quotes.
 * Login feature so only a registered user can add stories or quotes.
 * Forms to add a story / quote (this worked fine until the presentation!).
 * MySQL database for persistant story / quote storage.
-
-## Event Details
-The event lasted 24 hours, starting 8/3/19 at 3pm then finishing the following day.
-
-I completed the project by myself, under the team name of Bootstrap 9000, reflecting how I used spring boot and bootstrap.css for developing the server and style.

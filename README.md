@@ -6,7 +6,7 @@ A 24 hour hackathon event run by the University of Bristol's Computer Science So
 Awarded the [Best Individual Project Prize](https://twitter.com/CSSBristol/status/1106484984968302592). The original awards that the competition was based around were Best Mental Health Project, Best Safety Project, Best Fitness Project; however, the judges made an exception in allocating an extra prize for my project.
 
 ## The Pitch
-* This is a website that aggregates personal stories from across the Internet, all from people who've overcome large difficulties in their lives, mostly on a theme of wellbeing.
+* This is a website that aggregates personal stories from people who've overcome large difficulties in their lives.
 * Real stories are shared to help visitors understand that they are not alone in facing their issues.
 * When we learn how another person faced a difficulty similar to ours, new possibilities open up to us. We can identify and empathise with the writer.
 * Reading more stories, we learn more about what it means to be human; that we are all facing difficulties, that no-one is perfect, and that this is ok. 

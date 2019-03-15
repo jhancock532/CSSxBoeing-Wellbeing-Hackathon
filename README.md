@@ -6,11 +6,11 @@ A 24 hour hackathon event run by the University of Bristol's Computer Science So
 Awarded the [Best Individual Project Prize](https://twitter.com/CSSBristol/status/1106484984968302592). The original awards that the competition was based around were Best Mental Health Project, Best Safety Project, Best Fitness Project; however, the judges made an exception in allocating an extra prize for my project.
 
 ## The Pitch
-* This is a website that aggregates personal stories from people who've overcome large difficulties in their lives.
+* This is a website which aggregates personal stories from people who've overcome large difficulties in their lives.
 * Real stories are shared to help visitors understand that they are not alone in facing their issues.
 * When we learn how another person faced a difficulty similar to ours, new possibilities open up to us. We can identify and empathise with the writer.
 * Reading more stories, we learn more about what it means to be human; that we are all facing difficulties, that no-one is perfect, and that this is ok. 
-* Understanding this, we lessen our expectations for ourselves, lessen the guilt we have about our actions and lessen the shame we have built up inside us.
+* Understanding this, we start to lessen our expectations for ourselves, lessen the guilt we have about our actions and lessen the shame we have built up inside us.
 * Of course, reading stories might not be that helpful for you. That's ok! We're all unique, different things work for different people. If you've read a few stories, you've probably realised that there are **many ways** to overcome our difficulties anyway.
 * Why not try something different based on what you've read?
 

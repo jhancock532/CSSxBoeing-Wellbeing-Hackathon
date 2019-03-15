@@ -11,8 +11,8 @@ Awarded the [Best Individual Project Prize](https://twitter.com/CSSBristol/statu
 * When we learn how another person faced a difficulty similar to ours, new possibilities open up to us. We can identify and empathise with the writer.
 * Reading more stories, we learn more about what it means to be human; that we are all facing difficulties, that no-one is perfect, and that this is ok. 
 * Understanding this, we start to lessen our expectations for ourselves, lessen the guilt we have about our actions and lessen the shame we have built up inside us.
-* Of course, reading stories might not be that helpful for you. That's ok! We're all unique, different things work for different people. If you've read a few stories, you've probably realised that there are **many ways** to overcome our difficulties anyway.
-* Why not try something different based on what you've read?
+* Of course, you might not find this site that helpful for you. That's ok! We're all unique, different things work for different people. 
+* There are **many ways** to overcome our difficulties.
 
 ## Website Functionality
 * A basic search function which lists stories and quotes.
